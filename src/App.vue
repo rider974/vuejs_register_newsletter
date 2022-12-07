@@ -15,7 +15,7 @@ import CreatePost from './components/CreatePost.vue'
 
   <main>
     <CreatePost />
-    <TheWelcome />
+    
   </main>
 </template>
 

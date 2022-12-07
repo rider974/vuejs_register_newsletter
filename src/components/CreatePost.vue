@@ -2,39 +2,35 @@
   <div>
     <form @submit.prevent="createPost">
       <div>
-        <label for="userId">Post User ID</label>
-        <input type="text" id="userId" v-model="formData.userId" />
+        <label for="email">Entrez l'Email</label>
+        <input type="email" id="email" v-model="email" />
       </div>
-      <div>
-        <label for="title">Post Title</label>
-        <input type="text" id="title" v-model="formData.title" />
-      </div>
-      <div>
-        <label for="body">Post Body</label>
-        <input type="text" id="body" v-model="formData.body" />
-      </div>
-      <button>Create Post</button>
+      <button>S'inscrire</button>
     </form>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'CreatePost',
   data() {
     return {
-      formData: {
-        userId: '',
-        title: '',
-        body: '',
-      },
+        email: '',
     }
   },
   methods: {
     createPost() {
-      $axios
-        .post('https://jsonplaceholder.typicode.com/posts', this.formData)
+      fetch("http://localhost/vueJS-test/register", {
+        method: 'POST',
+        headers: {
+            
+            'Content-Type': 'application/x-www-form-urlencoded'
+              //'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify(data)
+        // permet d'envoyer les données au bon format
+        body : "email="+this.email
+    })
         .then((response) => {
           console.log(response)
         })
