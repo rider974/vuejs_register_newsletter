@@ -11,7 +11,7 @@ function register()
         $email = htmlspecialchars($_POST["email"]);
         $suscriber = subscribe($email); 
 
-        return json_encode($suscriber, JSON_PRETTY_PRINT); 
+        echo json_encode($suscriber, JSON_PRETTY_PRINT); 
     }
 }
 

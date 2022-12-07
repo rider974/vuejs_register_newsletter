@@ -1,8 +1,11 @@
 <template>
   <div>
+  <h2>S'inscire à la newsletter CyberVeille</h2>
     <form @submit.prevent="createPost">
+    <h3 :class="{active:isActive}">{{error}}</h3>
       <div>
-        <label for="email">Entrez l'Email</label>
+        <label for="email">Entrez votre Email</label>
+        <br />
         <input type="email" id="email" v-model="email" />
       </div>
       <button>S'inscrire</button>
@@ -16,6 +19,8 @@ export default {
   data() {
     return {
         email: '',
+        error:" ",
+        message: ""
     }
   },
   methods: {
@@ -32,7 +37,11 @@ export default {
         body : "email="+this.email
     })
         .then((response) => {
-          console.log(response)
+          return response.text()
+        })
+        
+        .then((result) => {
+          console.log(result)
         })
         .catch((error) => {
           console.log(error)

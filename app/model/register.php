@@ -21,33 +21,17 @@ function subscribe($email){
   
 
         if (!empty($isRegister2)){
-            return "vous êtes bien inscrit à la newsletter";
+            return ["message" =>"vous êtes bien inscrit à la newsletter"];
         }
 
     }
     else {
-        return "vous êtes déjà inscrit à cette newsletter";
+        return ["error" =>"vous êtes déjà inscrit à cette newsletter"];
     }
 
     
 }
 
-function isSuscribe($id_suscriber){
-    $sql = "SELECT register FROM suscribers WHERE id_suscriber = :id";
-    $req = getBdd()->prepare($sql);
-    $req->bindParam(":id", $id_suscriber);
-    $req->execute();
-
-    $result = $req->fetch();
-
-    if (!empty($result)){
-
-        return $result;
-    } 
-    else {
-        return false; 
-    }
-}
 /**
  * verify the email in the database 
  *
@@ -81,4 +65,21 @@ require_once "connexion.php";
     $result1 = $req1->fetchAll();
 
     return $result1; 
+}
+
+function isSuscribe($id_suscriber){
+    $sql = "SELECT register FROM suscribers WHERE id_suscriber = :id";
+    $req = getBdd()->prepare($sql);
+    $req->bindParam(":id", $id_suscriber);
+    $req->execute();
+
+    $result = $req->fetch();
+
+    if (!empty($result)){
+
+        return $result;
+    } 
+    else {
+        return false; 
+    }
 }

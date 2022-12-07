@@ -27,3 +27,6 @@ npm run dev
 ```sh
 npm run build
 ```
+### Use of Post to send Data to register 
+
+## 
