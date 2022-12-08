@@ -10,12 +10,12 @@ function register()
     require_once "../app/model/register.php";
         $email = htmlspecialchars($_POST["email"]);
         $suscriber = subscribe($email); 
-
-        echo json_encode($suscriber, JSON_PRETTY_PRINT); 
+        
+        echo json_encode($suscriber); 
     }
 }
 
-function api(){
+function all(){
     
     require_once "../model/register.php";
 

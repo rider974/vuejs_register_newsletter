@@ -17,7 +17,7 @@ class Router{
     }
 
 
-    public function addRoute($path , $controller = "RegisterController", $method ='GET', $param=null){
+    public function addRoute(string $path , string $controller = "RegisterController", string $method ='GET', array $param=null){
         $newPath = "/vueJS-test" . $path;
         $function= $param["function"] ?? null;
         $this->routes[$method][] = new Route($newPath, $controller, $function);

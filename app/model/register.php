@@ -21,14 +21,24 @@ function subscribe($email){
   
 
         if (!empty($isRegister2)){
-            return ["message" =>"vous êtes bien inscrit à la newsletter"];
+            // if user is in the database
+            return ["message" =>"Bravo  vous êtes inscrit à la newsletter ! ", 
+            "error"=> false];
+        }
+        else {
+            // if the user is not in the database and has not been inserted
+            return ["message" =>"un problème est survenu. Vous n'avez pas pu être inscrits", 
+            "error"=> true];
+      
         }
 
     }
     else {
-        return ["error" =>"vous êtes déjà inscrit à cette newsletter"];
+        // already exists in the database 
+        return ["message" => "Vous êtes déjà inscrits à cette newsletter", 
+                "error"=> true];
     }
-
+    
     
 }
 
@@ -53,6 +63,9 @@ function isRegister($email){
 
     return $result1; 
 }
+
+
+
 function all(){
     
 require_once "connexion.php";

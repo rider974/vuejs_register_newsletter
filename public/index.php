@@ -1,4 +1,5 @@
 <?php 
+header('Access-Control-Allow-Origin: *');
 require_once '../router/router.php';
 // je clique sur valider dans le formulaire de connexion
 
@@ -13,7 +14,7 @@ $router = new Router($_SERVER["REQUEST_URI"]);
 // in the function 
 $router->addRoute("/register",  "RegisterController", "POST", ["function"=> "register"]);
 
-$router->addRoute("/api",  "RegisterController", "POST", ["function"=> "api"]);
+$router->addRoute("/all",  "RegisterController", "POST", ["function"=> "all"]);
 
 $router->addRoute("/subscription",  "SubscriptionPageController", "GET", ["function"=> "getSubscriptionPage"]);
 
