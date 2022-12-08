@@ -1,8 +1,8 @@
 <template>
+
   <div v-if="register == false ">
     <h1   class='primary' >S'inscrire à la newsletter CyberVeille</h1>
       <form @submit.prevent="createPost" >
-      
         <div>
           <label class="dark" for="email">Entrez votre Email</label>
           <br />
@@ -11,9 +11,16 @@
         <div class="row  align-items-center">
           <button class=" col-3 btn btn-info ">S'inscrire</button>
         </div>
+         <h3  :class="[ textColor]">{{message}}</h3>
+    
       </form>
   </div>
-  <h3 v-else-if="register == true " :class="[ textColor]">{{message}}</h3>
+
+    <div v-else-if="register == true " class="align-self-end">
+      <h3  :class="[ textColor]">{{message}}</h3>
+        <button @submit.prevent="deleteRegistration({email})"  class="btn btn-danger">Se Désinscrire</button>
+    </div>
+
 </template>
 
 <script>
@@ -24,7 +31,8 @@ export default {
         email: '',
         message: "",
         textColor: '',
-        register: false
+        register: false,
+        deleteYN: false
     }
   },
   methods: {
@@ -61,9 +69,22 @@ export default {
           this.textColor = data.error ? "alert-danger" : "alert-success";
           console.log(data.message)
           
-        }
-        )
+        } )
          .catch((error) => console.log(error));
+    },
+    deleteRegistration(mail)
+    {
+      fetch("http://localhost/vueJS-test/delete", {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+           //   'Content-Type': 'application/json'
+        },
+        // body: JSON.stringify(data)
+        // permet d'envoyer les données au bon format
+        body : "email="+this.email+"&confirmDeletion="+this.deleteYN
+    })
+
     },
   },
 }

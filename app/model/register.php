@@ -96,3 +96,36 @@ function isSuscribe($id_suscriber){
         return false; 
     }
 }
+
+/**
+ * Delete the email of the subscribers
+ *
+ * @param string $email email of the subscriber
+ * @return array with index message, error 
+ **/
+ function deleteEmail(string $email )
+{
+    require_once "connexion.php";
+
+
+    $isRegister1 = isRegister($email);
+
+    if (!empty($isRegister1)){
+        
+    $sql = "DELETE FROM suscribers WHERE email = :email";
+    $req = getBdd()->prepare($sql);
+    $req->bindParam(":email", $email);
+    $req->execute();
+
+    }
+    $isRegister2 =isRegister($email);
+  
+
+        if (empty($isRegister2)){
+            return ["message" =>"un mail de confirmation vous a été envoyer", 
+            "error"=> false];
+      
+        }
+        return  ["message" =>"Un Problème technique est survenu. Vous n'avez pas pu être désinscrit de cette liste", 
+        "error"=> false];
+}

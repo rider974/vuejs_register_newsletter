@@ -1,12 +1,10 @@
-## Send back Messages from back to the front 
-<p>Error Message </p>
+## Tests
+-> un texte non valide Sol: utiliser un regex pour comparer si c'est un email valide
+-> La personne rentre un email existant verif la bdd
+-> email qui ne fonctionne plus Sol: pouvoir supprimer
 
-<p>Sucess  Message </p>
+## Fonctionnalitées
+Arrive sur la page puis rentre son email pour s'inscrire à la newsletter 
+Se désinscrire -> envoi d'un email de confirmation de désinscription 
 
-## Style of the View
-
-<p>Color green sucess red to false</p>
-
-<p>arrive on another page if success, stay on the same if failure</p>
-<p></p>
-## 
+Enlever le formulaire quand l'inscription est faite et afficher le message d'erreur ou de confirmation

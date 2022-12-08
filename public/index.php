@@ -18,6 +18,9 @@ $router->addRoute("/all",  "RegisterController", "POST", ["function"=> "all"]);
 
 $router->addRoute("/subscription",  "SubscriptionPageController", "GET", ["function"=> "getSubscriptionPage"]);
 
+$router->addRoute("/delete",  "RegisterController", "POST", ["function"=> "deleteSubscription"]);
+
+
 
 
 $router->run();
