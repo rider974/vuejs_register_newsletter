@@ -1,6 +1,6 @@
 <template>
 
-  <div v-if="register == false ">
+  <div v-if="clickInscription == false ">
     <h1   class='primary' >S'inscrire à la newsletter CyberVeille</h1>
       <form @submit.prevent="createPost" >
         <div>
@@ -11,14 +11,12 @@
         <div class="row  align-items-center">
           <button class=" col-3 btn btn-info ">S'inscrire</button>
         </div>
-         <h3  :class="[ textColor]">{{message}}</h3>
     
       </form>
   </div>
 
-    <div v-else-if="register == true " class="align-self-end">
+    <div v-else-if="clickInscription == true " class="align-self-end">
       <h3  :class="[ textColor]">{{message}}</h3>
-        <button @submit.prevent="deleteRegistration({email})"  class="btn btn-danger">Se Désinscrire</button>
     </div>
 
 </template>
@@ -32,7 +30,8 @@ export default {
         message: "",
         textColor: '',
         register: false,
-        deleteYN: false
+        deleteYN: false,
+        clickInscription: false
     }
   },
   methods: {
@@ -66,6 +65,7 @@ export default {
         {
           this.message=  data.message
           this.isRegister(data.error)
+          this.clickInscription = true
           this.textColor = data.error ? "alert-danger" : "alert-success";
           console.log(data.message)
           
