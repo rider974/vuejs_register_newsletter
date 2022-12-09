@@ -1,7 +1,6 @@
 ## Tests
 -> un texte non valide Sol: utiliser un regex pour comparer si c'est un email valide
--> La personne rentre un email existant verif la bdd
--> email qui ne fonctionne plus Sol: pouvoir supprimer
+-> email qui ne fonctionne plus Sol: pouvoir supprimer??
 
 ## Fonctionnalitées
 Arrive sur la page puis rentre son email pour s'inscrire à la newsletter 

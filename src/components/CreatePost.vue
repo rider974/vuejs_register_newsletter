@@ -8,8 +8,8 @@
           <br />
           <input type="email" class="form-control" id="email" v-model="email" />
         </div>
-        <div class="row  align-items-center">
-          <button class=" col-3 btn btn-info ">S'inscrire</button>
+        <div class="row  ">
+          <button class=" col-3 align-middle btn btn-info ">S'inscrire</button>
         </div>
     
       </form>

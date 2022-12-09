@@ -14,11 +14,23 @@ class RegisterController{
 function register()
 {
     if (isset($_POST["email"]) && !empty($_POST["email"]) ){
-
+        // vérifier que l'input est bien renvoyer 
+     
         $email = htmlspecialchars($_POST["email"]);
+      // verify this is a valid email function php included
+        $confirmEmail = validateEmail($email);
+       if ($confirmEmail)
+       {
+
         $suscriber = subscribe($email); 
         
         echo  json_encode($suscriber); 
+       }
+       else 
+       // renvoyer un message d'erreur en json
+       {
+        echo json_encode(["message"=> "l'email n'est pas valide", "error"=>true]);
+       }
     }
 }
 /**
@@ -56,3 +68,21 @@ function deleteSubscription($email)
     }
 }
 
+/**
+ * undocumented function summary
+ *
+ * Undocumented function long description
+ *
+ * @param Type $var Description
+ * @return type
+ * @throws conditon
+ **/
+ function validateEmail(string $email )
+{
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       return true;
+   }
+   else {
+    return false;
+   }
+}
